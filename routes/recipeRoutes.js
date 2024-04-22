@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/recipes', async (req, res) => {
     try {
         const searchQuery = req.query.q;
-        const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${searchQuery}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}`);
+        const response = await fetch(`https://api.edamam.com/search?q=${searchQuery}&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`);
         const data = await response.json();
         res.json(data);
     } catch (error) {
